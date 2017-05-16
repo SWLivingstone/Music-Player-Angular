@@ -51,6 +51,14 @@
       return albumLaLaLand;
     };
 
+    Fixtures.getCollection = function (numberOfAlbums) {
+      var collectionArray = [];
+      for (var i = 0; i < numberOfAlbums; i++) {
+        collectionArray.push(albumLaLaLand);
+      }
+      return collectionArray;
+    };
+
     return Fixtures;
   }
 
