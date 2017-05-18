@@ -23,8 +23,7 @@
          */
          var setSong = function(song) {
            if (currentBuzzObject) {
-             currentBuzzObject.stop();
-             SongPlayer.currentSong.playing = null;
+             stopSong();
            }
 
            currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -52,7 +51,17 @@
          */
          var playSong = function(song) {
            currentBuzzObject.play();
-           song.playing = true;
+           SongPlayer.currentSong.playing = true;
+         };
+
+         /**
+         *@function stopSong
+         *@desc Stops currentBuzzObject and sets song.playing to null
+         *@param {Object} song
+         */
+         var stopSong = function() {
+           currentBuzzObject.stop();
+           SongPlayer.currentSong.playing = null;
          };
 
          /**
@@ -103,6 +112,20 @@
            }
            var previousSong = currentAlbum.songs[previousSongIndex];
            SongPlayer.play(previousSong);
+         };
+
+         /**
+         *@function SongPlayer.next
+         *@desc When the next button is clicked on the player bar
+         * the next song is played.
+         */
+         SongPlayer.next = function() {
+           var nextSongIndex = getSongIndex(SongPlayer.currentSong) + 1;
+           if (nextSongIndex > currentAlbum.songs.length - 1) {
+             nextSongIndex = 0;
+           }
+           var nextSong = currentAlbum.songs[nextSongIndex];
+           SongPlayer.play(nextSong);
          };
 
          return SongPlayer;
