@@ -88,7 +88,9 @@
          SongPlayer.volume = 80;
 
          SongPlayer.setVolume = function(volume) {
-           currentBuzzObject.setVolume(volume);
+           if (currentBuzzObject) {
+             currentBuzzObject.setVolume(volume);
+            }
          };
 
          /**
