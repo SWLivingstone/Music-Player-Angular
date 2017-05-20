@@ -40,7 +40,7 @@
         albumArtUrl: '/assets/images/album_covers/La_La_Land_soundtrack.jpg',
         songs: [
           { title: 'Another Day of Sun', duration: 228, audioUrl: '/assets/music/Another_Day_of_Sun' },
-          { title: 'Someone in the Crowd', duration: 301, audioUrl: '/assets/music/Someone_in_the_Crowd' },
+          { title: 'Someone in the Crowd', duration: 260, audioUrl: '/assets/music/Someone_in_the_Crowd' },
           { title: 'City of Stars', duration: 111, audioUrl: '/assets/music/City_of_Stars'},
           { title: 'Audition', duration: 228, audioUrl: '/assets/music/Audition' },
           { title: 'A Lovely Night', duration: 237, audioUrl: '/assets/music/A_Lovely_Night' }

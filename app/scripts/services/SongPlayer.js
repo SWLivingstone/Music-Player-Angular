@@ -14,26 +14,26 @@
          * @desc Buzz object audio file
          * @type {Object}
          */
-         var currentBuzzObject = null;
+         SongPlayer.currentBuzzObject = null;
 
          /**
          *@function setSong
-         *@desc Stops currently playing song and loads new audio file as currentBuzzObject
+         *@desc Stops currently playing song and loads new audio file as SongPlayer.currentBuzzObject
          *@param {Object} song
          */
          var setSong = function(song) {
-           if (currentBuzzObject) {
+           if (SongPlayer.currentBuzzObject) {
              stopSong();
            }
 
-           currentBuzzObject = new buzz.sound(song.audioUrl, {
+           SongPlayer.currentBuzzObject = new buzz.sound(song.audioUrl, {
              formats: ['m4a'],
              preload: true
            });
 
-           currentBuzzObject.bind('timeupdate', function() {
+           SongPlayer.currentBuzzObject.bind('timeupdate', function() {
                $rootScope.$apply(function() {
-                   SongPlayer.currentTime = currentBuzzObject.getTime();
+                   SongPlayer.currentTime = SongPlayer.currentBuzzObject.getTime();
                });
            });
 
@@ -52,20 +52,20 @@
 
          /**
          *@function playSong
-         *@desc Plays currentBuzzObject and sets currentSong.playing to true
+         *@desc Plays SongPlayer.currentBuzzObject and sets currentSong.playing to true
          */
          var playSong = function(song) {
-           currentBuzzObject.play();
+           SongPlayer.currentBuzzObject.play();
            SongPlayer.currentSong.playing = true;
          };
 
          /**
          *@function stopSong
-         *@desc Stops currentBuzzObject and sets song.playing to null
+         *@desc Stops SongPlayer.currentBuzzObject and sets song.playing to null
          *@param {Object} song
          */
          var stopSong = function() {
-           currentBuzzObject.stop();
+           SongPlayer.currentBuzzObject.stop();
            SongPlayer.currentSong.playing = null;
          };
 
@@ -88,15 +88,15 @@
          SongPlayer.volume = 80;
 
          SongPlayer.setVolume = function(volume) {
-           if (currentBuzzObject) {
-             currentBuzzObject.setVolume(volume);
+           if (SongPlayer.currentBuzzObject) {
+             SongPlayer.currentBuzzObject.setVolume(volume);
             }
          };
 
          /**
          *@function SongPlayer.play
          *@desc Called in the view when song item number is clicked.  Pauses
-         *currentBuzzObject, sets new currentBuzzObject and plays it.
+         *SongPlayer.currentBuzzObject, sets new SongPlayer.currentBuzzObject and plays it.
          *@param {Object} song
          */
          SongPlayer.play = function(song) {
@@ -105,7 +105,7 @@
              setSong(song);
              playSong(song);
            } else if (SongPlayer.currentSong === song) {
-            if (currentBuzzObject.isPaused()) {
+            if (SongPlayer.currentBuzzObject.isPaused()) {
               playSong(song);
             }
            }
@@ -114,12 +114,12 @@
          /**
          *@function SongPlayer.pause
          *@desc Called in the view when pause button is clicked.  Pauses
-         *currentBuzzObject. Sets song.playing to false.
+         *SongPlayer.currentBuzzObject. Sets song.playing to false.
          *@param {Object} song
          */
          SongPlayer.pause = function(song) {
            song = song || SongPlayer.currentSong;
-           currentBuzzObject.pause();
+           SongPlayer.currentBuzzObject.pause();
            song.playing = false;
          };
 
@@ -152,8 +152,8 @@
          };
 
          SongPlayer.setCurrentTime = function(time) {
-             if (currentBuzzObject) {
-                 currentBuzzObject.setTime(time);
+             if (SongPlayer.currentBuzzObject) {
+                 SongPlayer.currentBuzzObject.setTime(time);
              }
          };
 

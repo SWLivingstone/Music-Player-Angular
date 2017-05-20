@@ -2,23 +2,23 @@
   <div class="container">
     <div class="control-group main-controls">
       <a class="previous">
-        <span class="ion-skip-backward"
+        <span class="button ion-skip-backward"
           ng-click="playerBar.songPlayer.previous()">
         </span>
       </a>
       <a class="play-pause">
-        <span class="ion-play"
+        <span class="button ion-play"
            ng-show="!playerBar.songPlayer.currentSong.playing"
            ng-click="playerBar.songPlayer.play()">
          </span>
-         <span class="ion-pause"
+         <span class="button ion-pause"
            ng-show="playerBar.songPlayer.currentSong.playing"
            ng-click="playerBar.songPlayer.pause()">
          </span>
       </a>
       <a class="next">
-        <span class="ion-skip-forward"
-        ng-click="playerBar.songPlayer.next()">
+        <span class="button ion-skip-forward"
+          ng-click="playerBar.songPlayer.next()">
         </span>
       </a>
     </div>
@@ -40,7 +40,13 @@
       </div>
     </div>
     <div class="control-group volume">
-      <span class="icon ion-volume-high"></span>
+      <span class="button icon ion-volume-high"
+        ng-show="!playerBar.songPlayer.currentBuzzObject.isMuted()"
+        ng-click="playerBar.songPlayer.currentBuzzObject.mute()"></span>
+      <span class="button icon ion-volume-mute"
+        ng-show="playerBar.songPlayer.currentBuzzObject.isMuted()"
+        ng-click="playerBar.songPlayer.currentBuzzObject.unmute()"
+      ></span>
       <seek-bar
         value="{{ playerBar.songPlayer.volume }}"
         max="{{ 100 }}"

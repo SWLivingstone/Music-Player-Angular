@@ -126,6 +126,7 @@
     margin-left: -0.5rem;
 }
 
+
 .player-bar .currently-playing .artist-name {
     bottom: 1.1rem;
 }
@@ -184,4 +185,8 @@
      .player-bar .currently-playing .artist-song-mobile {
          display: block;
      }
+ }
+
+     .button:hover {
+         color: rgb(233,50,117);
  }
