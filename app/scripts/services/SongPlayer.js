@@ -52,8 +52,7 @@
 
          /**
          *@function playSong
-         *@desc Plays currentBuzzObject and set song.playing to true
-         *@param {Object} song
+         *@desc Plays currentBuzzObject and sets currentSong.playing to true
          */
          var playSong = function(song) {
            currentBuzzObject.play();
@@ -81,6 +80,16 @@
          * @type {Number}
          */
          SongPlayer.currentTime = null;
+
+         /**
+         * @desc Volume from 0 to 100
+         * @type {Number}
+         */
+         SongPlayer.volume = 80;
+
+         SongPlayer.setVolume = function(volume) {
+           currentBuzzObject.setVolume(volume);
+         };
 
          /**
          *@function SongPlayer.play
