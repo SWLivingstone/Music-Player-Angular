@@ -2,7 +2,8 @@
   function Fixtures() {
     var Fixtures = {};
 
-    var albumPicasso = {
+    var collection = {
+      albumPicasso: {
         title: 'The Colors',
         artist: 'Pablo Picasso',
         label: 'Cubism',
@@ -15,24 +16,24 @@
             { title: 'Pink', duration: 153.14, audioUrl: '/assets/music/pink'},
             { title: 'Magenta', duration: 374.22, audioUrl: '/assets/music/magenta'}
         ]
-    };
+    },
 
-    var albumMarconi = {
-        title: 'The Telephone',
-        artist: 'Guglielmo Marconi',
-        label: 'EM',
-        year: '1909',
-        albumArtUrl: '/assets/images/album_covers/20.png',
+      albumAwesomeWave: {
+        title: 'An Awesome Wave',
+        artist: 'Alt-J',
+        label: 'Infectious',
+        year: '2011',
+        albumArtUrl: '/assets/images/album_covers/altJ.jpg',
         songs: [
-            { title: 'Hello, Operator?', duration: '1:01' },
-            { title: 'Ring, ring, ring', duration: '5:01' },
-            { title: 'Fits in your pocket', duration: '3:21'},
-            { title: 'Can you hear me now?', duration: '3:14' },
-            { title: 'Wrong phone number', duration: '2:15'}
+            { title: 'Breezeblocks', duration: 228, audioUrl: '/assets/music/Breezeblocks' },
+            { title: 'Dissolve Me', duration: 240, audioUrl: '/assets/music/Dissolve_Me' },
+            { title: 'Fitzpleasure', duration: 220, audioUrl: '/assets/music/Fitzpleasure'},
+            { title: 'Matilda', duration: 229, audioUrl: '/assets/music/Matilda' },
+            { title: 'Tessellate', duration: 183, audioUrl: '/assets/music/Tessellate'}
         ]
-    };
+    },
 
-    var albumLaLaLand = {
+      albumLaLaLand: {
         title: 'LaLa Land',
         artist: 'Original Soundtrack',
         label: 'Interscope',
@@ -45,18 +46,24 @@
           { title: 'Audition', duration: 228, audioUrl: '/assets/music/Audition' },
           { title: 'A Lovely Night', duration: 237, audioUrl: '/assets/music/A_Lovely_Night' }
         ]
+    }
+  };
+
+
+    Fixtures.getCollection = function () {
+      var collectionArray = [];
+      for (var album in collection) {
+        collectionArray.push(collection[album]);
+      }
+      return collectionArray;
+    };
+
+    Fixtures.setAlbum = function (album) {
+      Fixtures.selectedAlbum = album;
     };
 
     Fixtures.getAlbum = function () {
-      return albumLaLaLand;
-    };
-
-    Fixtures.getCollection = function (numberOfAlbums) {
-      var collectionArray = [];
-      for (var i = 0; i < numberOfAlbums; i++) {
-        collectionArray.push(albumLaLaLand);
-      }
-      return collectionArray;
+      return Fixtures.selectedAlbum;
     };
 
     return Fixtures;

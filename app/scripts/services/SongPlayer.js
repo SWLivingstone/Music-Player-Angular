@@ -1,11 +1,6 @@
 (function() {
     function SongPlayer($rootScope, Fixtures) {
          /**
-         * @desc Current album
-         * @type {Object}
-         */
-         var currentAlbum = Fixtures.getAlbum();
-         /**
          * @desc Factory object
          * @type {Object}
          */
@@ -27,7 +22,7 @@
            }
 
            SongPlayer.currentBuzzObject = new buzz.sound(song.audioUrl, {
-             formats: ['m4a'],
+             formats: ['m4a','mp3'],
              preload: true
            });
 
@@ -47,7 +42,7 @@
          *@returns {number} indexOf song in songs
          */
          var getSongIndex = function(song) {
-           return currentAlbum.songs.indexOf(song);
+           return Fixtures.selectedAlbum.songs.indexOf(song);
          };
 
          /**
@@ -131,9 +126,9 @@
          SongPlayer.previous = function() {
            var previousSongIndex = getSongIndex(SongPlayer.currentSong) - 1;
            if (previousSongIndex < 0) {
-             previousSongIndex = currentAlbum.songs.length -1;
+             previousSongIndex = Fixtures.selectedAlbum.songs.length -1;
            }
-           var previousSong = currentAlbum.songs[previousSongIndex];
+           var previousSong = Fixtures.selectedAlbum.songs[previousSongIndex];
            SongPlayer.play(previousSong);
          };
 
@@ -144,10 +139,10 @@
          */
          SongPlayer.next = function() {
            var nextSongIndex = getSongIndex(SongPlayer.currentSong) + 1;
-           if (nextSongIndex > currentAlbum.songs.length - 1) {
+           if (nextSongIndex > Fixtures.selectedAlbum.songs.length - 1) {
              nextSongIndex = 0;
            }
-           var nextSong = currentAlbum.songs[nextSongIndex];
+           var nextSong = Fixtures.selectedAlbum.songs[nextSongIndex];
            SongPlayer.play(nextSong);
          };
 
