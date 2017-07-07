@@ -30,8 +30,12 @@ body {
 
 .navbar .logo {
   position: relative;
-  left: 2rem;
   cursor: pointer;
+}
+
+.logo-button {
+  height: 50px;
+  width: 50px;
 }
 
 .logo-button:active {

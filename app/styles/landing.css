@@ -56,3 +56,9 @@ background-size: cover;
   color: rgb(223,50,117);
   font-size: 5rem;
 }
+
+@media (max-width: 635px) {
+  .hero-title {
+    margin-top: 100px;
+  }
+}
